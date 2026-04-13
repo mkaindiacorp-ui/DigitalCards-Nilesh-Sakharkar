@@ -166,7 +166,7 @@ background:#000;
 
     <!-- HEADER -->
     <div class="header">
-        <div class="logo"><img src="crop.png" width = "360" height= " 100"></div>
+        <div class="logo"><img src="Gold geometric symbol on black.png" width = "360" height= " 100"></div>
 
         <div class="profile">
             <img src="Nilesh S.png" alt="profile">
