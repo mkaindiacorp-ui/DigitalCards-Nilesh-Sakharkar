@@ -166,7 +166,7 @@ background:#000;
 
     <!-- HEADER -->
     <div class="header">
-        <div class="logo"><img src="Gold geometric symbol on black.png" width = "360" height= " 100"></div>
+        <div class="logo"><img src="Gold geometric symbol on black.png" width = "380" height= " 100"></div>
 
         <div class="profile">
             <img src="Nilesh S.png" alt="profile">
@@ -225,7 +225,7 @@ background:#000;
 	
 	<!--footer-->
 	<div class="footer">
-		<img src="Untitled-4 (1) (2).png" width="80" height="80" >
+		<img src="Untitled design" width="80" height="80" >
 	</div>
 
 
