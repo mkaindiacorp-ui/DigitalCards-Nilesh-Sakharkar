@@ -166,7 +166,7 @@ background:#000;
 
     <!-- HEADER -->
     <div class="header">
-        <div class="logo"><img src="Gold geometric symbol on black.png" width = "380" height= " 100"></div>
+        <div class="logo"><img src="Gold geometric symbol on black.png" width = "380" height= "150"></div>
 
         <div class="profile">
             <img src="Nilesh S.png" alt="profile">
@@ -218,14 +218,13 @@ background:#000;
 
     <!-- MAP -->
     <div class="map">
-        <iframe 
-        src="https://maps.google.com/maps?q=Nagpur&t=&z=13&ie=UTF8&iwloc=&output=embed">
+        <iframe src="https://www.google.com/maps/dir//MADHU+KUSUM+AND+ASSOCIATES,+Gurukrupa+Housing+Society,+Plot+No.+15,+Wathoda+Rd,+near+NMC+School,+Vathoda,+Wathoda+Layout,+Nagpur,+Maharashtra+440008,+India/@21.1386368,79.0888448,11270m/data=!3m2!1e3!4b1!4m8!4m7!1m0!1m5!1m1!1s0x3bd4c790f55bf6fd:0x14540d25b9f2578!2m2!1d79.1430648!2d21.1343434?entry=ttu&g_ep=EgoyMDI2MDQxNC4wIKXMDSoASAFQAw%3D%3D">
         </iframe>
     </div>
 	
 	<!--footer-->
 	<div class="footer">
-		<img src="Untitled design" width="80" height="80" >
+		<img src="Untitled design.jpg" width="80" height="80" >
 	</div>
 
 
