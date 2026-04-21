@@ -218,7 +218,7 @@ background:#000;
 
     <!-- MAP -->
     <div class="map">
-        <iframe src="https://www.google.com/maps/dir//MADHU+KUSUM+AND+ASSOCIATES,+Gurukrupa+Housing+Society,+Plot+No.+15,+Wathoda+Rd,+near+NMC+School,+Vathoda,+Wathoda+Layout,+Nagpur,+Maharashtra+440008,+India/@21.1386368,79.0888448,11270m/data=!3m2!1e3!4b1!4m8!4m7!1m0!1m5!1m1!1s0x3bd4c790f55bf6fd:0x14540d25b9f2578!2m2!1d79.1430648!2d21.1343434?entry=ttu&g_ep=EgoyMDI2MDQxNC4wIKXMDSoASAFQAw%3D%3D">
+        <iframe src="https://maps.app.goo.gl/Sa7YjiFP3k22v7fw6">
         </iframe>
     </div>
 	
@@ -257,7 +257,7 @@ function website() {
 }
 
 function map() {
-window.location.href = "https://www.google.com/maps/dir//MADHU+KUSUM+AND+ASSOCIATES,+Gurukrupa+Housing+Society,+Plot+No.+15,+Wathoda+Rd,+near+NMC+School,+Vathoda,+Wathoda+Layout,+Nagpur,+Maharashtra+440008/@21.1104057,79.0983953,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3bd4c790f55bf6fd:0x14540d25b9f2578!2m2!1d79.1430648!2d21.1343434?entry=ttu&g_ep=EgoyMDI2MDQwNS4wIKXMDSoASAFQAw%3D%3D";
+window.location.href = "https://maps.app.goo.gl/Sa7YjiFP3k22v7fw6";
 }
 
 // VCARD DOWNLOAD
