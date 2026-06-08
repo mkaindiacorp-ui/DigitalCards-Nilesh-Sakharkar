@@ -201,6 +201,14 @@ background:#000;
     <i class="fa-solid fa-angle-right" style="color:gold;"></i>
 </div>
 
+<div class="item call-highlight" onclick="youtube()">
+    <span>
+        <i class="fa-brands fa-youtube" style="color:gold;"></i>
+        YouTube
+    </span>
+    <i class="fa-solid fa-angle-right" style="color:gold;"></i>
+</div>
+
 <div class="item call-highlight" onclick="linkedin()">
     <span><i class="fa-brands fa-linkedin" style="color:gold;"></i> LinkedIn</span>
    <i class="fa-solid fa-angle-right" style="color:gold;"></i>
@@ -245,6 +253,9 @@ function whatsapp() {
 
 function instagram() {
     window.location.href = "https://instagram.com/mka.india.corp";
+}
+	function youtube() {
+    window.location.href = "https://www.youtube.com/@mka.india.corp.youtube";
 }
 
 function linkedin() {
