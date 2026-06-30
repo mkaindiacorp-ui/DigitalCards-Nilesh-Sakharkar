@@ -1,299 +1,1153 @@
-
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MKA Digital Card</title>
-
-<!-- Google Font -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-body {
-    background: linear-gradient(135deg,#d3d3d3,#f5f5f5);
-    display: flex;
-    justify-content: center;
-    padding: 15px;
-}
-
-/* CARD */
-.card {
-    width: 100%;
-    max-width: 400px;
-    border-radius: 20px;
-    overflow: hidden;
-    animation: fadeIn 1s ease;
-}
-
-/* HEADER */
-.header {
-    background: #000;
-    padding: 20px;
-    border-radius: 20px;
-    position: relative;
-    color: white;
-}
-
-.logo {
-    text-align: center;
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: gold;
-}
-
-.profile {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.profile img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 2px solid white;
-}
-
-.info h2 {
-    font-size: 16px;
-}
-
-.info p {
-    font-size: 14px;
-    opacity: 0.8;
-}
-
-/* BUTTON */
-.save-btn {
-    margin-top: 15px;
-    background: #777;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.save-btn:hover {
-    background:#46c34c;
-}
-
-
-
-/* LIST ITEMS */
-.list {
-    margin-top: 20px;
-}
-
-.item {
-    background: #000;
-    color: white;
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-	
-
-    /* animation */
-    transform: translateY(0);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-	 
-}
-
-.item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(212,175,55,0.35);
-}
-
-.item:active {
-    transform: translateY(-3px) scale(0.97);
-}
-
-.item.call-highlight {
-    border: 1px solid gold;
-    box-shadow: 0 0 10px rgba(212,175,55,0.25);
-}
-
-
-/* MAP */
-.map {
-    margin-top: 10px;
-}
-
-.map iframe {
-    width: 100%;
-    height: 200px;
-    border-radius: 10px;
-}
-/*footer*/
-.footer {
-margin-bottom:10px;
-background:#000;
-    display: flex;
-    justify-content: center;
-    padding: 15px;
-}
-
-/* ANIMATIONS */
-@keyframes fadeIn {
-    from {opacity:0;}
-    to {opacity:1;}
-}
-
-@keyframes slideUp {
-    to {
-        transform: translateY(0);
-        opacity: 1;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nilesh Narendra Sakarkar — Madhu Kusum Associates</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css" />
+  <style>
+    :root {
+      --gold: #c9a84c;
+      --gold-bright: #e8c95d;
+      --gold-dim: #7a5f28;
+      --gold-faint: rgba(201, 168, 76, 0.08);
+      --gold-subtle: rgba(201, 168, 76, 0.18);
+      --gold-border: rgba(201, 168, 76, 0.28);
+      --obsidian: #080808;
+      --deep: #0e0e0e;
+      --surface: #111111;
+      --surface2: #161616;
+      --text-primary: #f0ede6;
+      --text-muted: rgba(240, 237, 230, 0.45);
+      --text-dim: rgba(240, 237, 230, 0.22);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Jost', system-ui, sans-serif;
+      --transition: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
-}
-</style>
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      height: 100%;
+    }
+
+    body {
+      width: 100vw;
+      min-height: 100vh;
+      background: var(--obsidian);
+      font-family: var(--sans);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ════════════════════════════════════
+     LOADER
+  ════════════════════════════════════ */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: var(--obsidian);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      transition: opacity 0.9s var(--transition), transform 1s var(--transition);
+    }
+
+    #loader.exit {
+      opacity: 0;
+      transform: scale(1.03);
+      pointer-events: none;
+    }
+
+    .loader-monogram {
+      font-family: var(--serif);
+      font-size: 56px;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      color: transparent;
+      background: linear-gradient(135deg, #7a5f28 0%, #c9a84c 40%, #e8c95d 60%, #c9a84c 80%, #7a5f28 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      opacity: 0;
+      animation: fadeUp 0.8s var(--transition) 0.2s forwards;
+    }
+
+    .loader-rule {
+      width: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin-top: 24px;
+      animation: ruleGrow 1.2s var(--transition) 0.6s forwards;
+    }
+
+    .loader-label {
+      margin-top: 16px;
+      font-size: 9px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      font-weight: 300;
+      opacity: 0;
+      animation: fadeUp 0.8s var(--transition) 1s forwards;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes ruleGrow {
+      to {
+        width: 120px;
+      }
+    }
+
+    /* ════════════════════════════════════
+     CANVAS (wraps everything post-load)
+  ════════════════════════════════════ */
+    #canvas {
+      opacity: 0;
+      transition: opacity 1.2s var(--transition);
+    }
+
+    #canvas.visible {
+      opacity: 1;
+    }
+
+    /* ════════════════════════════════════
+     AMBIENT BACKGROUND — PARTICLE CANVAS
+  ════════════════════════════════════ */
+    #particle-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ════════════════════════════════════
+     DESKTOP LAYOUT: CSS GRID FULL SCREEN
+  ════════════════════════════════════ */
+    .layout {
+      position: relative;
+      z-index: 1;
+      width: 100vw;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 42% 58%;
+      grid-template-rows: 1fr;
+    }
+
+    /* ── LEFT PANEL ── */
+    .panel-left {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(40px, 6vw, 80px) clamp(40px, 5vw, 64px);
+      border-right: 1px solid var(--gold-border);
+      overflow: hidden;
+    }
+
+    .left-glow-top {
+      position: absolute;
+      top: -120px;
+      left: -80px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201, 168, 76, 0.09) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .left-glow-btm {
+      position: absolute;
+      bottom: -160px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201, 168, 76, 0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    /* Company badge */
+    .company-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 44px;
+      opacity: 0;
+      animation: fadeUp 0.8s var(--transition) 0.1s forwards;
+    }
+
+    .badge-line {
+      width: 28px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+
+    .badge-text {
+      font-size: 9px;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    /* Avatar */
+    .avatar-wrap {
+      position: relative;
+      width: fit-content;
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: fadeUp 0.9s var(--transition) 0.25s forwards;
+    }
+
+    .avatar-ring-outer {
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      border: 1px solid var(--gold-border);
+      padding: 6px;
+      position: relative;
+    }
+
+    .avatar-ring-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 168, 76, 0.12);
+      padding: 6px;
+    }
+
+    .avatar-core {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #1a1508, #0e0c06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 64px;
+      font-weight: 300;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .avatar-core::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent 0%, rgba(201, 168, 76, 0.08) 20%, transparent 40%);
+      animation: spinGlow 8s linear infinite;
+    }
+
+    .avatar-shimmer-ring {
+      position: absolute;
+      inset: -2px;
+      border-radius: 50%;
+      border: 1px solid transparent;
+      background: linear-gradient(var(--obsidian), var(--obsidian)) padding-box,
+        linear-gradient(135deg, transparent 30%, var(--gold-bright) 50%, transparent 70%) border-box;
+      animation: shimmerRotate 4s linear infinite;
+    }
+
+    .avatar-dot {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #1a5c3a;
+      border: 2px solid var(--obsidian);
+      box-shadow: 0 0 8px rgba(26, 92, 58, 0.6);
+    }
+
+    @keyframes spinGlow {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes shimmerRotate {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Name block */
+    .name-block {
+      opacity: 0;
+      animation: fadeUp 0.9s var(--transition) 0.4s forwards;
+    }
+
+    .name-title {
+      font-family: var(--serif);
+      font-size: clamp(32px, 3.5vw, 52px);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: 0.01em;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .name-title em {
+      font-style: italic;
+      color: var(--gold);
+      font-weight: 300;
+    }
+
+    .designation-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .designation-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .designation {
+      font-size: 12px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 300;
+    }
+
+    .company-name {
+      font-family: var(--serif);
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 10px;
+      letter-spacing: 0.06em;
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    /* Divider ornament */
+    .ornament {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 32px 0;
+      opacity: 0;
+      animation: fadeUp 0.8s var(--transition) 0.55s forwards;
+    }
+
+    .ornament-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold-border), transparent);
+    }
+
+    .ornament-diamond {
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    /* Company description */
+    .company-desc {
+      font-size: 14px;
+      line-height: 1.85;
+      color: var(--text-muted);
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      max-width: 360px;
+      opacity: 0;
+      animation: fadeUp 0.9s var(--transition) 0.65s forwards;
+    }
+
+    /* Location */
+    .location-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 28px;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      font-weight: 300;
+      cursor: pointer;
+      transition: color 0.3s;
+      opacity: 0;
+      animation: fadeUp 0.8s var(--transition) 0.75s forwards;
+    }
+
+    .location-row:hover {
+      color: var(--gold);
+    }
+
+    .location-row i {
+      font-size: 14px;
+    }
+
+    /* ── RIGHT PANEL ── */
+    .panel-right {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(32px, 5vw, 60px) clamp(40px, 5vw, 72px);
+      overflow: hidden;
+    }
+
+    .right-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201, 168, 76, 0.04) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .section-eyebrow {
+      font-size: 8px;
+      letter-spacing: 0.48em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      font-weight: 400;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.7s var(--transition) 0.3s forwards;
+    }
+
+    /* Contact grid */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .contact-card {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 20px;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid var(--gold-border);
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      overflow: hidden;
+      transition: background 0.4s var(--transition),
+        border-color 0.4s var(--transition),
+        transform 0.4s var(--transition);
+      opacity: 0;
+      animation: fadeUp 0.8s var(--transition) var(--cd, 0.4s) forwards;
+    }
+
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201, 168, 76, 0.06) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .contact-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.07), transparent);
+      transition: left 0.7s var(--transition);
+    }
+
+    .contact-card:hover {
+      background: rgba(201, 168, 76, 0.05);
+      border-color: rgba(201, 168, 76, 0.55);
+      transform: translateY(-2px);
+    }
+
+    .contact-card:hover::before {
+      opacity: 1;
+    }
+
+    .contact-card:hover::after {
+      left: 150%;
+    }
+
+    .contact-card:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    .card-icon-wrap {
+      width: 42px;
+      height: 42px;
+      border-radius: 2px;
+      border: 1px solid var(--gold-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: var(--gold-faint);
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .contact-card:hover .card-icon-wrap {
+      background: rgba(201, 168, 76, 0.12);
+      border-color: var(--gold);
+    }
+
+    .card-icon-wrap i {
+      font-size: 20px;
+      color: var(--gold);
+    }
+
+    .card-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .card-label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+    }
+
+    .card-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 3px;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card-arrow {
+      font-size: 13px;
+      color: rgba(201, 168, 76, 0.3);
+      flex-shrink: 0;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .contact-card:hover .card-arrow {
+      color: var(--gold);
+      transform: translateX(3px);
+    }
+
+    /* Save contact — full-width accent */
+    .save-row {
+      margin-bottom: 10px;
+      opacity: 0;
+      animation: fadeUp 0.8s var(--transition) 0.96s forwards;
+      display: flex;
+      justify-content: center;
+    }
+
+    .save-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 16px 24px;
+      background: transparent;
+      border: 1px solid var(--gold);
+      border-radius: 2px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.4s var(--transition), transform 0.3s;
+      text-decoration: none;
+      color: var(--gold);
+      max-width: 100%;
+      width: fit-content;
+      margin: 0;
+    }
+
+    .save-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201, 168, 76, 0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .save-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.12), transparent);
+      transition: left 0.8s var(--transition);
+    }
+
+    .save-card:hover::before {
+      opacity: 1;
+    }
+
+    .save-card:hover::after {
+      left: 100%;
+    }
+
+    .save-card:hover {
+      background: rgba(201, 168, 76, 0.05);
+      transform: translateY(-1px);
+    }
+
+    .save-card:active {
+      transform: scale(0.99);
+    }
+
+    .save-card i {
+      font-size: 18px;
+    }
+
+    .save-card span {
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* Map panel */
+    .map-panel {
+      position: relative;
+      margin-top: 10px;
+      border: 1px solid var(--gold-border);
+      border-radius: 2px;
+      overflow: hidden;
+      opacity: 0;
+      animation: fadeUp 0.9s var(--transition) 1.1s forwards;
+    }
+
+    .map-panel iframe {
+      width: 100%;
+      height: 150px;
+      display: block;
+      border: 0;
+      filter: grayscale(1) brightness(0.4) sepia(0.2);
+      transition: filter 0.5s;
+    }
+
+    .map-panel:hover iframe {
+      filter: grayscale(0.7) brightness(0.55) sepia(0.15);
+    }
+
+    .map-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px 16px;
+      background: linear-gradient(0deg, rgba(8, 8, 8, 0.88) 0%, transparent 100%);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .map-overlay:hover {
+      color: var(--gold);
+    }
+
+    .map-overlay i {
+      font-size: 12px;
+    }
+
+    /* Footer */
+    .page-footer {
+      position: absolute;
+      bottom: 24px;
+      right: 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      animation: fadeUp 0.7s var(--transition) 1.4s forwards;
+    }
+
+    .footer-line {
+      width: 20px;
+      height: 1px;
+      background: var(--gold-dim);
+    }
+
+    .footer-label {
+      font-size: 8px;
+      letter-spacing: 0.36em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      font-weight: 300;
+    }
+
+    /* ════════════════════════════════════
+     MOBILE LAYOUT
+  ════════════════════════════════════ */
+    @media (max-width: 768px) {
+      .layout {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .panel-left {
+        min-height: unset;
+        padding: 48px 28px 36px;
+        border-right: none;
+        border-bottom: 1px solid var(--gold-border);
+        align-items: center;
+        text-align: center;
+      }
+
+      .company-badge {
+        justify-content: center;
+      }
+
+      .ornament-line {
+        display: none;
+      }
+
+      .ornament {
+        justify-content: center;
+      }
+
+      .avatar-ring-outer {
+        width: 160px;
+        height: 160px;
+      }
+
+      .avatar-core {
+        font-size: 48px;
+      }
+
+      .designation-row {
+        justify-content: center;
+      }
+
+      .company-desc {
+        max-width: none;
+        text-align: center;
+      }
+
+      .location-row {
+        justify-content: center;
+      }
+
+      .name-title {
+        font-size: clamp(28px, 8vw, 38px);
+      }
+
+      .panel-right {
+        min-height: unset;
+        padding: 32px 20px 48px;
+        justify-content: flex-start;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .contact-card {
+        padding: 16px 18px;
+      }
+
+      .page-footer {
+        position: static;
+        justify-content: center;
+        margin-top: 28px;
+        margin-bottom: 4px;
+      }
+
+      .map-panel iframe {
+        height: 170px;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1100px) {
+      .panel-left {
+        padding: 40px 36px;
+      }
+
+      .panel-right {
+        padding: 32px 36px;
+      }
+
+      .avatar-ring-outer {
+        width: 170px;
+        height: 170px;
+      }
+    }
+
+    /* ════════════════════════════════════
+     REDUCED MOTION
+  ════════════════════════════════════ */
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="card">
+  <!-- LOADER -->
+  <div id="loader" aria-hidden="true">
+    <div class="loader-monogram">MKA</div>
+    <div class="loader-rule"></div>
+    <div class="loader-label">Madhu Kusum &amp; Associates</div>
+  </div>
 
-    <!-- HEADER -->
-    <div class="header">
-        <div class="logo"><img src="Gold geometric symbol on black.png" width = "380" height= "150"></div>
+  <!-- AMBIENT PARTICLES -->
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
 
-        <div class="profile">
-            <img src="Nilesh S.png" alt="profile">
+  <!-- MAIN CANVAS -->
+  <main id="canvas">
+    <div class="layout">
 
-            <div class="info">
-                <h2>Mr. Nilesh Narendra Sakarkar</h2>
-                <p>Founder & Director</p>
-                <p>Madhu Kusum Associates</p>
+      <!-- ══ LEFT PANEL ══ -->
+      <section class="panel-left" aria-label="Profile">
+        <div class="left-glow-top" aria-hidden="true"></div>
+        <div class="left-glow-btm" aria-hidden="true"></div>
+
+        <!-- <div class="company-badge">
+          <div class="badge-line" aria-hidden="true"></div>
+          <span class="badge-text">Est. Nagpur, India</span>
+        </div> -->
+
+        <div class="avatar-wrap">
+          <div class="avatar-ring-outer">
+            <div class="avatar-ring-inner">
+              <div class="avatar-core">
+                <span style="position:relative;z-index:1; background: url('Nilesh\ S.png') no-repeat center center; background-size: cover; width: 100%; height: 100%;"></span>
+              </div>
             </div>
+          </div>
+          <div class="avatar-shimmer-ring" aria-hidden="true"></div>
+          <div class="avatar-dot" aria-label="Available"></div>
         </div>
 
-        <div class="save-btn" onclick="saveContact()">Save Contact</div>
+        <div class="name-block">
+          <h1 class="name-title">
+            Nilesh Narendra<br><em>Sakarkar</em>
+          </h1>
+          <div class="designation-row">
+            <span class="designation">Founder &amp; Director</span>
+          </div>
+          <p class="company-name">Madhu Kusum and Associates</p>
+        </div>
+
+        <!-- <div class="ornament" aria-hidden="true">
+          <div class="ornament-line"></div>
+          <div class="ornament-diamond"></div>
+          <div class="ornament-line"
+            style="background:linear-gradient(90deg,transparent,var(--gold-border));transform:scaleX(-1);"></div>
+        </div> -->
+
+        <p class="company-desc" style="margin-top: 20px;">
+          A distinguished consultancy rooted in excellence, delivering strategic financial and corporate advisory
+          services with precision and trust.
+        </p>
+
+        <!-- <button class="location-row" onclick="openMap()" aria-label="Open location in maps">
+          <i class="ti ti-map-pin" aria-hidden="true"></i>
+          Wathoda Layout, Nagpur, Maharashtra
+        </button> -->
+      </section>
+
+      <!-- ══ RIGHT PANEL ══ -->
+      <section class="panel-right" aria-label="Contact and actions">
+        <div class="right-glow" aria-hidden="true"></div>
+
+        <p class="section-eyebrow">Connect directly</p>
+
+        <div class="contact-grid">
+          <a class="contact-card" href="tel:+918007725090" style="--cd:0.45s" aria-label="Call +91 80077 25090">
+            <div class="card-icon-wrap"><i class="ti ti-phone" aria-hidden="true"></i></div>
+            <div class="card-text">
+              <div class="card-label">Call</div>
+              <div class="card-sub">+91 80077 25090</div>
+            </div>
+            <i class="ti ti-arrow-right card-arrow" aria-hidden="true"></i>
+          </a>
+
+          <a class="contact-card" href="https://wa.me/918007725090" target="_blank" rel="noopener" style="--cd:0.52s"
+            aria-label="WhatsApp">
+            <div class="card-icon-wrap"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i></div>
+            <div class="card-text">
+              <div class="card-label">WhatsApp</div>
+              <div class="card-sub">Message directly</div>
+            </div>
+            <i class="ti ti-arrow-right card-arrow" aria-hidden="true"></i>
+          </a>
+
+          <a class="contact-card" href="mailto:info@madhukusumassociates.com" style="--cd:0.60s" aria-label="Email">
+            <div class="card-icon-wrap"><i class="ti ti-mail" aria-hidden="true"></i></div>
+            <div class="card-text">
+              <div class="card-label">Email</div>
+              <div class="card-sub">info@madhukusumassociates.com</div>
+            </div>
+            <i class="ti ti-arrow-right card-arrow" aria-hidden="true"></i>
+          </a>
+
+          <a class="contact-card" href="https://www.madhukusumassociates.com" target="_blank" rel="noopener"
+            style="--cd:0.68s" aria-label="Website">
+            <div class="card-icon-wrap"><i class="ti ti-world" aria-hidden="true"></i></div>
+            <div class="card-text">
+              <div class="card-label">Website</div>
+              <div class="card-sub">madhukusumassociates.com</div>
+            </div>
+            <i class="ti ti-arrow-right card-arrow" aria-hidden="true"></i>
+          </a>
+
+          <a class="contact-card" href="https://instagram.com/mka.india.corp" target="_blank" rel="noopener"
+            style="--cd:0.76s" aria-label="Instagram @mka.india.corp">
+            <div class="card-icon-wrap"><i class="ti ti-brand-instagram" aria-hidden="true"></i></div>
+            <div class="card-text">
+              <div class="card-label">Instagram</div>
+              <div class="card-sub">@mka.india.corp</div>
+            </div>
+            <i class="ti ti-arrow-right card-arrow" aria-hidden="true"></i>
+          </a>
+
+          <a class="contact-card" href="https://linkedin.com" target="_blank" rel="noopener" style="--cd:0.84s"
+            aria-label="LinkedIn">
+            <div class="card-icon-wrap"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></div>
+            <div class="card-text">
+              <div class="card-label">LinkedIn</div>
+              <div class="card-sub">Connect professionally</div>
+            </div>
+            <i class="ti ti-arrow-right card-arrow" aria-hidden="true"></i>
+          </a>
+        </div>
+
+        <!-- Save contact -->
+        <div class="save-row">
+          <button class="save-card" onclick="saveContact()" aria-label="Save contact to device">
+            <i class="ti ti-address-book" aria-hidden="true"></i>
+            <span >Save Contact</span>
+          </button>
+        </div>
+
+        <!-- Map -->
+        <div class="map-panel">
+          <iframe src="https://maps.google.com/maps?q=Madhu+Kusum+Associates+Nagpur&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            loading="lazy" title="Office location map" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+          <div class="map-overlay" onclick="openMap()" role="button" tabindex="0"
+            aria-label="Open directions in Google Maps">
+            <i class="ti ti-navigation" aria-hidden="true"></i>
+            Get Directions — Wathoda, Nagpur
+          </div>
+        </div>
+
+        <!-- Footer watermark -->
+        <div class="page-footer" aria-label="Company branding">
+          <div class="footer-line" aria-hidden="true"></div>
+          <span class="footer-label">Madhu Kusum &amp; Associates</span>
+        </div>
+      </section>
+
     </div>
+  </main>
 
+  <script>
+    /* ── LOADER ── */
+    (function () {
+      const loader = document.getElementById('loader');
+      const canvas = document.getElementById('canvas');
+      setTimeout(() => {
+        loader.classList.add('exit');
+        canvas.classList.add('visible');
+        setTimeout(() => { loader.style.display = 'none'; }, 900);
+      }, 2200);
+    })();
 
-	
-	<br>
-	<div class="item call-highlight" onclick="callNow()">
-    <span>
-        <i class="fa-solid fa-phone-volume" style="color:gold;"></i>
-        Call 
-    </span>
-    <i class="fa-solid fa-angle-right" style="color:gold;"></i>
-</div>
-    <div class="item call-highlight" onclick="whatsapp()">
-    <span><i class="fa-brands fa-whatsapp" style="color:gold;"></i> WhatsApp</span>
-    <i class="fa-solid fa-angle-right" style="color:gold;"></i>
-</div>
+    /* ── PARTICLES ── */
+    (function () {
+      const cvs = document.getElementById('particle-canvas');
+      const ctx = cvs.getContext('2d');
+      let W, H, particles = [];
 
-<div class="item call-highlight" onclick="instagram()">
-    <span><i class="fa-brands fa-instagram" style="color:gold;"></i> Instagram</span>
-    <i class="fa-solid fa-angle-right" style="color:gold;"></i>
-</div>
+      function resize() {
+        W = cvs.width = window.innerWidth;
+        H = cvs.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
 
-<div class="item call-highlight" onclick="youtube()">
-    <span>
-        <i class="fa-brands fa-youtube" style="color:gold;"></i>
-        YouTube
-    </span>
-    <i class="fa-solid fa-angle-right" style="color:gold;"></i>
-</div>
+      const GOLD_RGBA = [
+        'rgba(201,168,76,',
+        'rgba(232,201,93,',
+        'rgba(122,95,40,',
+      ];
 
-<div class="item call-highlight" onclick="linkedin()">
-    <span><i class="fa-brands fa-linkedin" style="color:gold;"></i> LinkedIn</span>
-   <i class="fa-solid fa-angle-right" style="color:gold;"></i>
-</div>
+      function createParticle() {
+        return {
+          x: Math.random() * W,
+          y: Math.random() * H,
+          r: Math.random() * 1.2 + 0.2,
+          vy: -(Math.random() * 0.3 + 0.05),
+          vx: (Math.random() - 0.5) * 0.12,
+          alpha: Math.random() * 0.35 + 0.05,
+          life: 0,
+          maxLife: Math.random() * 400 + 200,
+          color: GOLD_RGBA[Math.floor(Math.random() * GOLD_RGBA.length)],
+        };
+      }
 
-<div class="item call-highlight" onclick="email()">
-    <span><i class="fa-solid fa-envelope" style="color:gold;"></i> Email</span>
-    <i class="fa-solid fa-angle-right" style="color:gold;"></i>
-</div>
+      for (let i = 0; i < 80; i++) particles.push(createParticle());
 
-<div class="item call-highlight" onclick="website()">
-    <span><i class="fa-solid fa-globe" style="color:gold;"></i> Website</span>
-    <i class="fa-solid fa-angle-right" style="color:gold;"></i>
-</div>
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        for (let i = particles.length - 1; i >= 0; i--) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.life++;
+          const fade = p.life < 60 ? p.life / 60 : p.life > p.maxLife - 60 ? (p.maxLife - p.life) / 60 : 1;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = p.color + (p.alpha * fade) + ')';
+          ctx.fill();
+          if (p.life >= p.maxLife || p.y < -10) {
+            particles[i] = createParticle();
+            particles[i].y = H + 10;
+          }
+        }
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
 
-<div class="item call-highlight" onclick="map()">
-    <span><i class="fa-solid fa-map" style="color:gold;"></i> LOCATION</span>
-    <i class="fa-solid fa-angle-right" style="color:gold;"></i>
-</div>
-    <!-- MAP -->
-    <div class="map">
-       <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d12268.959012656296!2d79.14356385!3d21.1368559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x3bd4c790f55bf6fd%3A0x14540d25b9f2578!2sMADHU%20KUSUM%20AND%20ASSOCIATES%2C%20Gurukrupa%20Housing%20Society%2C%20Plot%20No.%2015%2C%20Wathoda%20Rd%2C%20near%20NMC%20School%2C%20Vathoda%2C%20Wathoda%20Layout%2C%20Nagpur%2C%20Maharashtra%20440008%2C%20India!3m2!1d21.1343434!2d79.14306479999999!5e1!3m2!1sen!2sin!4v1776774380539!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-	
-	<!--footer-->
-	<div class="footer">
-		<img src="Untitled design.jpg" width="80" height="80" >
-	</div>
+    /* ── LIGHT STREAK — subtle horizontal shimmer lines ── */
+    (function () {
+      const cvs = document.getElementById('particle-canvas');
+      const ctx = cvs.getContext('2d');
+      const streaks = [];
+      for (let i = 0; i < 3; i++) {
+        streaks.push({
+          y: Math.random() * window.innerHeight,
+          speed: Math.random() * 0.4 + 0.15,
+          width: Math.random() * 200 + 80,
+          alpha: Math.random() * 0.04 + 0.01,
+          x: Math.random() * window.innerWidth,
+        });
+      }
+      /* streaks drawn in same loop — this is a separate overlay approach */
+    })();
 
+    /* ── MAGNETIC HOVER for desktop cards ── */
+    (function () {
+      if (window.innerWidth < 769) return;
+      document.querySelectorAll('.contact-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const r = card.getBoundingClientRect();
+          const cx = r.left + r.width / 2;
+          const cy = r.top + r.height / 2;
+          const dx = (e.clientX - cx) / (r.width / 2) * 4;
+          const dy = (e.clientY - cy) / (r.height / 2) * 2;
+          card.style.transform = `translateY(-2px) translate(${dx}px, ${dy}px)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
+        });
+      });
+    })();
 
-<script>
+    /* ── ACTIONS ── */
+    function openMap() {
+      window.open('https://www.google.com/maps/dir//MADHU+KUSUM+AND+ASSOCIATES,+Wathoda+Rd,+Nagpur');
+    }
 
+    function saveContact() {
+      const vcard = [
+        'BEGIN:VCARD',
+        'VERSION:3.0',
+        'FN:Nilesh Narendra Sakarkar',
+        'N:Sakarkar;Nilesh;Narendra;;',
+        'ORG:Madhu Kusum and Associates',
+        'TITLE:Founder & Director',
+        'TEL;TYPE=CELL:+918007725090',
+        'EMAIL:info@madhukusumassociates.com',
+        'URL:https://www.madhukusumassociates.com',
+        'ADR;TYPE=WORK:;;Wathoda Layout;Nagpur;Maharashtra;;India',
+        'END:VCARD'
+      ].join('\n');
+      const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'nilesh-sakarkar-mka.vcf';
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(url), 2000);
+    }
 
-// ACTIONS
-function callNow() {
-    window.location.href = "tel:+918007725090";
-}
+    /* ── MAP overlay keyboard accessibility ── */
+    document.querySelector('.map-overlay').addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openMap(); }
+    });
+  </script>
+</body>
 
-function whatsapp() {
-    window.location.href = "https://wa.me/918007725090";
-}
-
-function instagram() {
-    window.location.href = "https://instagram.com/mka.india.corp";
-}
-	function youtube() {
-    window.location.href = "https://www.youtube.com/@mka.india.corp.youtube";
-}
-
-function linkedin() {
-    window.location.href = "#";
-}
-
-function email() {
-    window.location.href = "mailto:info.madhukusumassociates.com";
-}
-
-function website() {
-    window.location.href = "https://www.madhukusumassociates.com";
-}
-
-function map() {
-window.location.href = "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12268.959012656296!2d79.14356385!3d21.1368559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1776776041739!5m2!1sen!2sin";
-}
-
-// VCARD DOWNLOAD
-function saveContact() {
-    const vcard = `
-BEGIN:VCARD
-VERSION:3.0
-FN:Nilesh Narendra Sakarkar
-ORG:Madhu Kusum Associates
-TEL:+918007725090
-EMAIL:info.madhukusumassociates.com
-END:VCARD
-`;
-
-    const blob = new Blob([vcard], { type: "text/vcard" });
-    const url = URL.createObjectURL(blob);
-
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "contact.vcf";
-    a.click();
-}
-
-</script>
-
+</html>
